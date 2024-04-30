@@ -43,6 +43,14 @@
           matTooltip="Excluir Arquivo"
           [style]="{ cursor: 'pointer' }"
         ></mat-icon>
+        <mat-icon
+          (click)="onClickDownloadButton(element)"
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="download"
+          matTooltip="Download Arquivo"
+          [style]="{ cursor: 'pointer' }"
+        ></mat-icon>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

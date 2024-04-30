@@ -122,6 +122,19 @@ export class SecondpageComponent implements OnInit, OnDestroy {
     }
   }
 
+  onClickDownloadButton(fileObject: FileObject) {
+    if (fileObject) {
+      this.fileService.downloadFile(fileObject.idArchive).subscribe({
+        next: (data: Blob) => {
+          this.downloadFile(data, fileObject);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+    }
+  }
+
   onClickUploadButton() {
     if (this.fileSelected) {
       const formData = new FormData();
@@ -138,5 +151,17 @@ export class SecondpageComponent implements OnInit, OnDestroy {
     } else {
       this.toastr.warning('Selecione um arquivo primeiro.');
     }
+  }
+
+  downloadFile(data: Blob, fileObject: FileObject) {
+    const blob = new Blob([data], { type: 'application/octet-stream' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileObject.originalFileName;
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
   }
 }

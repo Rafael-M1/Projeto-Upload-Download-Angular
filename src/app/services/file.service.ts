@@ -21,4 +21,10 @@ export class FileService {
   deleteFile(id: number) {
     return this.http.delete<any>(`${this.apiUrl}/files/${id}`);
   }
+
+  downloadFile(id: number) {
+    return this.http.get(`${this.apiUrl}/download/${id}`, {
+      responseType: 'blob',
+    });
+  }
 }

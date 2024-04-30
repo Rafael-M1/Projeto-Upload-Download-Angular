@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       HttpClientModule,
       ToastrModule.forRoot({
-        maxOpened: 5,
+        maxOpened: 3,
         tapToDismiss: false,
         closeButton: true,
         timeOut: 1500,
