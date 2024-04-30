@@ -32,8 +32,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './secondpage.component.scss',
 })
 export class SecondpageComponent implements OnInit, OnDestroy {
-  @ViewChild('fileInput')
-  fileInput!: ElementRef;
   isAuthenticated = false;
   private isAuthenticatedSubscription!: Subscription;
 
@@ -64,10 +62,6 @@ export class SecondpageComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe((result) => {
       // console.log('The dialog was closed', result);
     });
-  }
-
-  onClickUploadButton() {
-    this.fileInput.nativeElement.click();
   }
 
   onFileSelected(event: Event) {
