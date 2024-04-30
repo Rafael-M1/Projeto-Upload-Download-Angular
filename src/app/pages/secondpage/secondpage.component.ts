@@ -34,6 +34,7 @@ import { ToastrService } from 'ngx-toastr';
 export class SecondpageComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private isAuthenticatedSubscription!: Subscription;
+  private fileSelected!: File;
 
   constructor(
     private loginService: LoginService,
@@ -64,12 +65,19 @@ export class SecondpageComponent implements OnInit, OnDestroy {
     });
   }
 
+  get fileSelectedName(): string {
+    if (this.fileSelected) {
+      return `Arquivo selecionado: ${this.fileSelected.name}`;
+    }
+    return `Arquivo selecionado: `;
+  }
+
   onFileSelected(event: Event) {
     let inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
-      const file = inputElement.files[0];
+      this.fileSelected = inputElement.files[0];
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('file', this.fileSelected);
       this.uploadService.uploadFile(formData).subscribe({
         next: (value) => {
           this.toastr.success('Upload do Arquivo feito com sucesso!');
