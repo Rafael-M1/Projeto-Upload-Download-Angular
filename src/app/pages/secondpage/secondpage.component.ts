@@ -76,6 +76,12 @@ export class SecondpageComponent implements OnInit, OnDestroy {
     let inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
       this.fileSelected = inputElement.files[0];
+      inputElement.value = '';
+    }
+  }
+
+  onClickUploadButton() {
+    if (this.fileSelected) {
       const formData = new FormData();
       formData.append('file', this.fileSelected);
       this.uploadService.uploadFile(formData).subscribe({
@@ -86,7 +92,8 @@ export class SecondpageComponent implements OnInit, OnDestroy {
           this.toastr.error('Falha ao fazer Upload do Arquivo.');
         },
       });
-      inputElement.value = '';
+    } else {
+      this.toastr.warning('Selecione um arquivo primeiro.');
     }
   }
 }
