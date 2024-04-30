@@ -1,0 +1,28 @@
+<p>secondpage works!</p>
+<div *ngIf="isAuthenticated">O usuário está autenticado!</div>
+<!-- <button mat-raised-button disabled matTooltip="This is a tooltip!">
+  Disabled button allowing interactivity
+</button> -->
+<section [style]="{ display: 'flex', 'column-gap': '10px' }">
+  <div class="example-button-row">
+    <button
+      mat-flat-button
+      color="primary"
+      matTooltip="This is a tooltip!"
+      (click)="openDialog()"
+    >
+      Abrir
+    </button>
+  </div>
+  <div>
+    <input
+      #fileInput
+      type="file"
+      [style]="{ display: 'none' }"
+      (change)="onFileSelected($event)"
+    />
+    <button mat-flat-button color="primary" (click)="onClickUploadButton()">
+      Upload
+    </button>
+  </div>
+</section>

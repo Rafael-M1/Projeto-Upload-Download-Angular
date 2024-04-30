@@ -1,0 +1,30 @@
+<form [formGroup]="formulario" (ngSubmit)="onClickEntrar()">
+  <div>
+    <label for="login">Login:</label>
+    <input id="login" type="text" formControlName="username" />
+    <span
+      *ngIf="formulario.get('username')?.errors?.['required'] && formulario.get('username')?.touched"
+      >Login é obrigatório</span
+    >
+    <span
+      *ngIf="formulario.get('username')?.errors?.['minlength'] && formulario.get('username')?.touched"
+      >Tamanho mínimo de 6 caracteres.</span
+    >
+  </div>
+  <div>
+    <label for="password">Senha:</label>
+    <input id="password" type="password" formControlName="password" />
+    <span
+      *ngIf="formulario.get('password')?.errors?.['required'] && formulario.get('password')?.touched"
+      >Senha é obrigatória</span
+    >
+    <span
+      *ngIf="formulario.get('password')?.errors?.['minlength'] && formulario.get('password')?.touched"
+      >Tamanho mínimo de 6 caracteres.</span
+    >
+  </div>
+  <button type="submit" [disabled]="isButtonDisabled || formulario.invalid">
+    Entrar
+  </button>
+  <!-- <button type="button" (click)="logging()">Logging</button> -->
+</form>

@@ -1,0 +1,16 @@
+<nav>
+  <ul>
+    <li>
+      <a [routerLink]="['/']"><span>Página Inicial</span></a>
+    </li>
+    <li>
+      <a [routerLink]="['/about']"><span>Sobre</span></a>
+    </li>
+    <li *ngIf="isAuthenticated">
+      <a (click)="deslogar()"><span>Sair</span></a>
+    </li>
+    <li *ngIf="!isAuthenticated">
+      <a [routerLink]="['/login']"><span>Entrar</span></a>
+    </li>
+  </ul>
+</nav>

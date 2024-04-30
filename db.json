@@ -1,0 +1,15 @@
+{
+  "livros": [
+    {
+      "id": 1,
+      "nome": "Livro A",
+      "autorId": 1
+    }
+  ],
+  "autors": [
+    {
+      "id": 1,
+      "nome": "Mario"
+    }
+  ]
+}
